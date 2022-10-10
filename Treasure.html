@@ -22,49 +22,102 @@
 
 <div class="container">
     <div class="image-row d-flex justify-content-center">
-    <div><img  width=120 height=100 src="closedChest.jpg"></div>
-    <div><img  width=120 height=100 src="closedChest.jpg"></div>
-    <div><img  width=120 height=100 src="closedChest.jpg"></div>
-    <div><img  width=120 height=100 src="closedChest.jpg"></div>
-    <div><img  width=120 height=100 src="closedChest.jpg"></div>
+    <div><img id="img0" onclick="check(0)" width=120 height=100 src="closedChest.jpg"></div>
+    <div><img id="img1" onclick="check(1)" width=120 height=100 src="closedChest.jpg"></div>
+    <div><img id="img2" onclick="check(2)" width=120 height=100 src="closedChest.jpg"></div>
+    <div><img id="img3" onclick="check(3)" width=120 height=100 src="closedChest.jpg"></div>
+    <div><img id="img4" onclick="check(4)" width=120 height=100 src="closedChest.jpg"></div>
 </div>
 </div>
 <div class="container">
     <div class="image-row d-flex justify-content-center">
-    <div><img  width=120 height=100 src="closedChest.jpg"></div>
-    <div><img  width=120 height=100 src="closedChest.jpg"></div>
-    <div><img  width=120 height=100 src="closedChest.jpg"></div>
-    <div><img  width=120 height=100 src="closedChest.jpg"></div>
-    <div><img  width=120 height=100 src="closedChest.jpg"></div>
+    <div><img id="img5" onclick="check(5)" width=120 height=100 src="closedChest.jpg"></div>
+    <div><img id="img6" onclick="check(6)" width=120 height=100 src="closedChest.jpg"></div>
+    <div><img id="img7" onclick="check(7)" width=120 height=100 src="closedChest.jpg"></div>
+    <div><img id="img8" onclick="check(8)" width=120 height=100 src="closedChest.jpg"></div>
+    <div><img id="img9" onclick="check(9)" width=120 height=100 src="closedChest.jpg"></div>
 </div>
 </div>
 <div class="container">
     <div class="image-row d-flex justify-content-center">
-    <div><img  width=120 height=100 src="closedChest.jpg"></div>
-    <div><img  width=120 height=100 src="closedChest.jpg"></div>
-    <div><img  width=120 height=100 src="helpimage.jpg"></div>
-    <div><img  width=120 height=100 src="closedChest.jpg"></div>
-    <div><img  width=120 height=100 src="closedChest.jpg"></div>
+    <div><img id="img10" onclick="check(10)" width=120 height=100 src="closedChest.jpg"></div>
+    <div><img id="img11" onclick="check(11)" width=120 height=100 src="closedChest.jpg"></div>
+    <div><img id="img12" onclick="help()" width=120 height=100 src="helpimage.jpg"></div>
+    <div><img id="img13" onclick="check(13)" width=120 height=100 src="closedChest.jpg"></div>
+    <div><img id="img14" onclick="check(14)" width=120 height=100 src="closedChest.jpg"></div>
     </div>
 </div>
 <div class="container">
     <div class="image-row d-flex justify-content-center">
-    <div><img  width=120 height=100 src="closedChest.jpg"></div>
-    <div><img  width=120 height=100 src="closedChest.jpg"></div>
-    <div><img  width=120 height=100 src="closedChest.jpg"></div>
-    <div><img  width=120 height=100 src="closedChest.jpg"></div>
-    <div><img  width=120 height=100 src="closedChest.jpg"></div>
+    <div><img id="img15" onclick="check(15)" width=120 height=100 src="closedChest.jpg"></div>
+    <div><img id="img16" onclick="check(16)" width=120 height=100 src="closedChest.jpg"></div>
+    <div><img id="img17" onclick="check(17)" width=120 height=100 src="closedChest.jpg"></div>
+    <div><img id="img18" onclick="check(18)" width=120 height=100 src="closedChest.jpg"></div>
+    <div><img id="img19" onclick="check(19)" width=120 height=100 src="closedChest.jpg"></div>
     </div>
 </div>
 <div class="container">
     <div class="image-row d-flex justify-content-center">
-    <div><img  width=120 height=100 src="closedChest.jpg"></div>
-    <div><img  width=120 height=100 src="closedChest.jpg"></div>
-    <div><img  width=120 height=100 src="closedChest.jpg"></div>
-    <div><img  width=120 height=100 src="closedChest.jpg"></div>
-    <div><img  width=120 height=100 src="closedChest.jpg"></div>
+    <div><img id="img20" onclick="check(20)" width=120 height=100 src="closedChest.jpg"></div>
+    <div><img id="img21" onclick="check(21)" width=120 height=100 src="closedChest.jpg"></div>
+    <div><img id="img22" onclick="check(22)" width=120 height=100 src="closedChest.jpg"></div>
+    <div><img id="img23" onclick="check(23)" width=120 height=100 src="closedChest.jpg"></div>
+    <div><img id="img24" onclick="check(24)" width=120 height=100 src="closedChest.jpg"></div>
     </div>
 </div>
-
+<script>
+  let ids=[];
+  for(let i=0;i<25;i++){
+    ids[i]="img"+i
+  }
+let chestCount=0;
+let score=0;
+let lastCheck=12;
+let treasureLocation=18;
+function check(position){
+ let imgLoc= document.getElementById(ids[position]);
+ if(position==treasureLocation){
+  imgLoc.src="treasureChest.jpg";
+  
+ }
+ else{
+  imgLoc.src="emptyChest.jpg";
+ }
+ chestCount+=1;
+ score+=1;
+ document.getElementById("chests").innerHTML="Number of chests checked is "+chestCount+".";
+ document.getElementById("score").innerHTML="Score is "+score+".";
+ lastCheck=position;
+}
+function help(){
+  column=lastCheck%5;
+  row=lastCheck/5;
+  treasureColumn=treasureLocation%5;
+  treasureRow=treasureLocation/5;
+  score+=2;
+  document.getElementById("score").innerHTML="Score is "+score+".";
+  if(lastCheck==treasureLocation){
+    document.getElementById("help").innerHTML="Sorry, no help available";
+  }
+  else if(parseInt(row)==parseInt(treasureRow)){
+    if(row<treasureRow){
+      document.getElementById("help").innerHTML="right";
+    }
+    else{
+      document.getElementById("help").innerHTML="left";
+    }
+  }
+  else if(column==treasureColumn){
+    if(lastCheck<treasureLocation){
+      document.getElementById("help").innerHTML="down";
+    }
+    else{
+      document.getElementById("help").innerHTML="up";
+    }  }
+  else{
+    document.getElementById("help").innerHTML="Sorry, no help available";
+  }
+}
+</script>
 </body>
 </html>
