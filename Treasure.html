@@ -19,7 +19,8 @@
 <div class="container" id="chests" style="background-color:blueviolet;font-family: sans-serif;">Number of chests checked is zero.</div>
 <div class="container" id="score" style="background-color:cornflowerblue">Score is unknown.</div>
 <div class="container" id="help" style="background-color: greenyellow;font-size: large;">Help report</div>
-
+<br>
+<button class="btn btn-primary" onclick="newGame()">New Game</button>
 <div class="container">
     <div class="image-row d-flex justify-content-center">
     <div><img id="img0" onclick="check(0)" width=120 height=100 src="closedChest.jpg"></div>
@@ -117,6 +118,21 @@ function help(){
   else{
     document.getElementById("help").innerHTML="Sorry, no help available";
   }
+}
+
+function newGame(){
+  treasureLocation=Math.floor(Math.random() * (24 - 0)) + 0;
+  chestCount=0;
+  score=0;
+  document.getElementById("chests").innerHTML="Number of chests checked is "+chestCount+".";
+ document.getElementById("score").innerHTML="Score is "+score+".";
+ if(treasureLocation==12){
+      treasureLocation=12+Math.floor(Math.random()*12)
+      }
+ for (var i = 0; i <= 24; i++) {
+       if(i != 12)
+    document.getElementById(ids[i]).src = "closedChest.jpg"
+       }
 }
 </script>
 </body>
